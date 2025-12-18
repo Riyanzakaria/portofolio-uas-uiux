@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio UI/UX - Transportasi App</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0f172a', /* Slate 900 */
+                        neonBlue: '#06b6d4', /* Cyan 500 */
+                        neonPurple: '#8b5cf6', /* Violet 500 */
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #06b6d4, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        /* Animasi Melayang (Floating) untuk Mockup */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        /* Background Gradient Blobs */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <div class="blob bg-neonBlue w-96 h-96 rounded-full top-0 left-0 animate-pulse"></div>
+    <div class="blob bg-neonPurple w-96 h-96 rounded-full bottom-0 right-0 animate-pulse"></div>
+
+    <nav class="fixed top-0 w-full z-50 glass-card border-b border-white/10 px-6 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="font-heading font-bold text-xl tracking-wider">
+                PORTFOLIO<span class="text-neonBlue"> UIUX</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#overview" class="hover:text-neonBlue transition">Overview</a>
+                <a href="#empathize" class="hover:text-neonBlue transition">Empathize</a>
+                <a href="#define" class="hover:text-neonBlue transition">Define</a>
+                <a href="#ideate" class="hover:text-neonBlue transition">Ideate</a>
+                <a href="#prototype" class="hover:text-neonBlue transition">Prototype</a>
+                <a href="#test" class="hover:text-neonBlue transition">Test</a>
+            </div>
+            <a href="#prototype" class="bg-gradient-to-r from-neonBlue to-neonPurple px-5 py-2 rounded-full font-bold text-white text-sm hover:opacity-90 transition">
+                Lihat App
+            </a>
+        </div>
+    </nav>
+
+    <header class="min-h-screen flex items-center justify-center pt-48 pb-20 relative overflow-hidden">
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neonPurple/20 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="container mx-auto px-6 text-center z-10">
+            
+            <h1 class="gsap-hero text-5xl md:text-7xl font-heading font-extrabold mb-4 leading-tight">
+                Revolusi Transportasi <br>
+                <span class="text-gradient">Masa Depan</span>
+            </h1>
+
+            <p class="gsap-hero text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
+                Aplikasi Bonceng UI/UX Design - Final Project UAS<br>
+                <span class="text-white font-semibold">Oleh: Riyan Zakaria Z - 244311058</span>
+            </p>
+
+            <div class="gsap-hero flex justify-center gap-4 mb-16">
+                <a href="#overview" class="glass-card px-8 py-3 rounded-full hover:bg-white/10 transition border border-neonBlue text-neonBlue">
+                    <i class="fas fa-arrow-down mr-2"></i> Jelajahi Proses
+                </a>
+            </div>
+            
+            <div class="gsap-hero relative mx-auto max-w-5xl">
+                
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-r from-neonBlue/30 to-neonPurple/30 blur-[80px] rounded-full -z-10"></div>
+
+                <img src="img/mockup.png" 
+                     alt="Mockup Aplikasi" 
+                     class="relative z-10 w-full drop-shadow-2xl animate-float block mx-auto">
+                
+                <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#050505] to-transparent z-20"></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="overview" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="gsap-reveal">
+                    <h2 class="text-3xl font-heading font-bold mb-6 text-neonBlue">Latar Belakang & Tema</h2>
+                    
+                    <p class="text-slate-300 leading-relaxed mb-4">
+                        <strong>Tema: Integrated On-Demand Transportation & Food Delivery.</strong>
+                    </p>
+                    
+                    <p class="text-slate-400 leading-relaxed text-justify">
+                        Di era digital yang serba cepat, mobilitas dan efisiensi waktu adalah prioritas utama. 
+                        Pengguna seringkali membutuhkan fleksibilitas moda transportasi (Motor untuk kecepatan, Mobil untuk kenyamanan) 
+                        sekaligus kemudahan memesan makanan di sela kesibukan. 
+                        <br><br>
+                        Namun, pengalaman berpindah-pindah aplikasi seringkali merepotkan. 
+                        Oleh karena itu, proyek ini bertujuan merancang antarmuka aplikasi <strong>All-in-One</strong> 
+                        yang menggabungkan layanan <strong>Ride, Car, dan Food</strong> dengan navigasi yang intuitif dan modern.
+                    </p>
+                </div>
+                
+                <div class="gsap-reveal glass-card p-6 rounded-xl border border-white/10">
+                    <h3 class="text-xl font-bold mb-4 border-b border-white/10 pb-2">Fitur Utama (Services)</h3>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-neonBlue/20 flex items-center justify-center mr-4 text-neonBlue">
+                                <i class="fas fa-motorcycle"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-white">Ride (Motor)</strong>
+                                <span class="text-sm text-slate-400">Solusi cepat menembus kemacetan.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-neonPurple/20 flex items-center justify-center mr-4 text-neonPurple">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-white">Car (Mobil)</strong>
+                                <span class="text-sm text-slate-400">Kenyamanan ekstra untuk perjalanan jauh/grup.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center mr-4 text-orange-500">
+                                <i class="fas fa-hamburger"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-white">Food Delivery</strong>
+                                <span class="text-sm text-slate-400">Pesan makanan favorit tanpa antri.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="empathize" class="py-20 bg-slate-900/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 gsap-reveal">
+                <span class="text-neonPurple uppercase tracking-widest text-sm font-bold">Tahap 1</span>
+                <h2 class="text-4xl font-heading font-bold mt-2">Empathize</h2>
+                <p class="text-slate-400 mt-2">Menggali kebutuhan pengguna melalui Wawancara & Observasi.</p>
+            </div>
+
+           <div class="mb-16">
+                <h3 class="gsap-reveal text-2xl font-bold mb-8 pl-4 border-l-4 border-neonBlue">User Persona / Profil Pengguna</h3>
+                
+                <div class="flex flex-col gap-8">
+                    
+                    <div class="gsap-reveal glass-card p-8 rounded-3xl border border-neonBlue/30 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-neonBlue/10 rounded-full blur-[80px] -z-10"></div>
+
+                        <div class="grid md:grid-cols-12 gap-8">
+                            <div class="md:col-span-4 text-center md:text-left border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0 md:pr-6">
+                                <img src="img/user1.png" class="w-32 h-32 rounded-full border-4 border-neonBlue mx-auto md:mx-0 mb-4 object-cover shadow-lg shadow-neonBlue/20">
+                                <h4 class="font-heading font-bold text-2xl text-white">Pramudya Rehan Dildar</h4>
+                                <p class="text-neonBlue font-semibold mb-1">19 Tahun</p>
+                                <p class="text-slate-400 text-sm mb-6">Mahasiswa Politeknik Negeri Madiun <br>(Jurusan Akuntansi Sektor Publik)</p>
+                                
+                                <div class="bg-black/40 p-4 rounded-xl text-left">
+                                    <h5 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Key Attributes</h5>
+                                    <ul class="space-y-2 text-sm text-slate-300">
+                                        <li class="flex items-start"><i class="fas fa-motorcycle text-neonBlue mt-1 mr-2"></i> Menggunakan motor sebagai transportasi utama</li>
+                                        <li class="flex items-start"><i class="fas fa-mobile-alt text-neonBlue mt-1 mr-2"></i> Adaptif teknologi tapi hemat biaya.</li>
+                                        <li class="flex items-start"><i class="fas fa-university text-neonBlue mt-1 mr-2"></i> Mahasiswa aktif mobilitas tinggi</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="md:col-span-8">
+                                <div class="mb-6">
+                                    <h5 class="text-lg font-bold text-white mb-2">Short Description</h5>
+                                    <p class="text-slate-300 text-sm leading-relaxed italic border-l-2 border-slate-600 pl-4">
+                                        "Rehan merupakan mahasiswa yang aktif kuliah dan memiliki mobilitas tinggi antara kos, kampus, dan tempat makan. Ia menggunakan aplikasi transportasi hanya untuk keperluan tertentu (makanan/bepergian singkat), namun lebih memilih motor pribadi untuk hemat."  12, 14]
+                                    </p>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-green-500/5 p-4 rounded-xl border border-green-500/20">
+                                        <strong class="text-green-400 block text-xs uppercase mb-2"><i class="fas fa-check-circle mr-1"></i> Needs (Kebutuhan)</strong>
+                                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                            <li>Sistem cepat temukan driver di jam sibuk.</li>
+                                            <li>Promo simpel tanpa syarat rumit.</li>
+                                            <li>Aplikasi stabil & tidak lag saat pesan makan.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-red-500/5 p-4 rounded-xl border border-red-500/20">
+                                        <strong class="text-red-400 block text-xs uppercase mb-2"><i class="fas fa-times-circle mr-1"></i> Challenges (Masalah)</strong>
+                                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                            <li>Susah cari driver saat jam ramai (lama nunggu).</li>
+                                            <li>Syarat promo terlalu banyak & susah dipakai.</li>
+                                            <li>Aplikasi error saat beban pengguna tinggi.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="bg-gradient-to-r from-neonBlue/20 to-neonPurple/20 p-4 rounded-xl border border-white/10">
+                                    <strong class="text-white block text-sm uppercase mb-2"><i class="fas fa-lightbulb text-yellow-300 mr-2"></i> Opportunities (Peluang Desain)</strong>
+                                    <div class="grid md:grid-cols-3 gap-2 text-xs text-slate-200">
+                                        <div class="bg-black/50 p-2 rounded">
+                                            Perbaikan sistem pencarian driver lebih akurat.
+                                        </div>
+                                        <div class="bg-black/50 p-2 rounded">
+                                            Fitur simplifikasi promo (otomatis berlaku).
+                                        </div>
+                                        <div class="bg-black/50 p-2 rounded">
+                                            Promo khusus mahasiswa (Student Plan).
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gsap-reveal glass-card p-8 rounded-3xl border border-neonBlue/30 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-neonBlue/10 rounded-full blur-[80px] -z-10"></div>
+
+                        <div class="grid md:grid-cols-12 gap-8">
+                            <div class="md:col-span-4 text-center md:text-left border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0 md:pr-6">
+                                <img src="img/user2.png" class="w-32 h-32 rounded-full border-4 border-neonBlue mx-auto md:mx-0 mb-4 object-cover shadow-lg shadow-neonBlue/20">
+                                <h4 class="font-heading font-bold text-2xl text-white">Agus Purnomo</h4>
+                                <p class="text-neonBlue font-semibold mb-1">52 Tahun</p>
+                                <p class="text-slate-400 text-sm mb-6">Pegawai Apotek</p>
+                                
+                                <div class="bg-black/40 p-4 rounded-xl text-left">
+                                    <h5 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Key Attributes</h5>
+                                    <ul class="space-y-2 text-sm text-slate-300">
+                                        <li class="flex items-start"><i class="fas fa-mobile-alt text-neonBlue mt-1 mr-2"></i> Jarang menggunakan aplikasi transportasi online, hanya saat di luar kota</li>
+                                        <li class="flex items-start"><i class="fas fa-motorcycle text-neonBlue mt-1 mr-2"></i> Transportasi utama: sepeda motor</li>
+                                        <li class="flex items-start"><i class="fas fa-person text-neonBlue mt-1 mr-2"></i> Termasuk pengguna generasi lebih tua yang masih kurang familiar dengan teknologi</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="md:col-span-8">
+                                <div class="mb-6">
+                                    <h5 class="text-lg font-bold text-white mb-2">Short Description</h5>
+                                    <p class="text-slate-300 text-sm leading-relaxed italic border-l-2 border-slate-600 pl-4">
+                                        Agus adalah seorang pegawai apotek yang menggunakan sepeda motor sebagai transportasi utama karena dianggap cepat, praktis, dan satu-satunya kendaraan yang dimiliki. Ia jarang menggunakan aplikasi transportasi online, kecuali saat bepergian ke luar kota. Agus merasa aplikasi seperti Gojek sudah cukup membantu, namun tampilan dan fitur masih sulit dipahami oleh orang tua seperti dirinya.
+                                    </p>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-green-500/5 p-4 rounded-xl border border-green-500/20">
+                                        <strong class="text-green-400 block text-xs uppercase mb-2"><i class="fas fa-check-circle mr-1"></i> Needs (Kebutuhan)</strong>
+                                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                            <li>Aplikasi transportasi yang mudah dipahami oleh semua kalangan usia</li>
+                                            <li>Tampilan yang jelas, sederhana, dan bahasa yang mudah dimengerti</li>
+                                            <li>Sistem pembayaran yang tidak rumit</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-red-500/5 p-4 rounded-xl border border-red-500/20">
+                                        <strong class="text-red-400 block text-xs uppercase mb-2"><i class="fas fa-times-circle mr-1"></i> Challenges (Masalah)</strong>
+                                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                            <li>Sulit memahami fitur aplikasi karena gaptek</li>
+                                            <li>Belum terbiasa menggunakan uang digital (e-wallet)</li>
+                                            <li>Tulisan pada aplikasi terlalu kecil untuk dibaca oleh pengguna lansia</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="bg-gradient-to-r from-neonBlue/20 to-neonPurple/20 p-4 rounded-xl border border-white/10">
+                                    <strong class="text-white block text-sm uppercase mb-2"><i class="fas fa-lightbulb text-yellow-300 mr-2"></i> Opportunities (Peluang Desain)</strong>
+                                    <div class="grid md:grid-cols-3 gap-2 text-xs text-slate-200">
+                                        <div class="bg-black/50 p-2 rounded">
+                                            Menambahkan fitur panduan visual atau suara untuk membantu pengguna lanjut usia
+                                        </div>
+                                        <div class="bg-black/50 p-2 rounded">
+                                            Aplikasi dapat menyediakan mode ramah lansia dengan tampilan sederhana dan ukuran teks lebih besar
+                                        </div>
+                                        <div class="bg-black/50 p-2 rounded">
+                                            Menyediakan promo perjalanan 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gsap-reveal glass-card p-8 rounded-3xl border border-neonBlue/30 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-neonBlue/10 rounded-full blur-[80px] -z-10"></div>
+
+                        <div class="grid md:grid-cols-12 gap-8">
+                            <div class="md:col-span-4 text-center md:text-left border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0 md:pr-6">
+                                <img src="img/user3.png" class="w-32 h-32 rounded-full border-4 border-neonBlue mx-auto md:mx-0 mb-4 object-cover shadow-lg shadow-neonBlue/20">
+                                <h4 class="font-heading font-bold text-2xl text-white">Zeny Zulfatul ‘Ulya</h4>
+                                <p class="text-neonBlue font-semibold mb-1">18 Tahun</p>
+                                <p class="text-slate-400 text-sm mb-6">Mahasiswi</p>
+                                
+                                <div class="bg-black/40 p-4 rounded-xl text-left">
+                                    <h5 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Key Attributes</h5>
+                                    <ul class="space-y-2 text-sm text-slate-300">
+                                        <li class="flex items-start"><i class="fas fa-mobile-alt  text-neonBlue mt-1 mr-2"></i> Pengguna digital aktif yang mengetahui aplikasi dari media sosial.</li>
+                                        <li class="flex items-start"><i class="fas fa-tags text-neonBlue mt-1 mr-2"></i> Peka terhadap promo serta memilih aplikasi berdasarkan harga termurah dan promo</li>
+                                        <li class="flex items-start"><i class="fas fa-university text-neonBlue mt-1 mr-2"></i> Mahasiswa aktif dan anak kos yang mengandalkan aplikasi untuk bepergian dan memesan makanan.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="md:col-span-8">
+                                <div class="mb-6">
+                                    <h5 class="text-lg font-bold text-white mb-2">Short Description</h5>
+                                    <p class="text-slate-300 text-sm leading-relaxed italic border-l-2 border-slate-600 pl-4">
+                                        Mahasiswi berusia 18 tahun yang tinggal di kos dan belum memiliki kendaraan pribadi. Ia sangat bergantung pada aplikasi seperti Gojek dan Grab untuk bepergian dan membeli makanan. Namun, ia selalu mencari promo agar bisa lebih hemat. Baginya, aplikasi transportasi sangat membantu kehidupan sehari-hari sebagai anak kos yang sibuk kuliah.
+                                    </p>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-green-500/5 p-4 rounded-xl border border-green-500/20">
+                                        <strong class="text-green-400 block text-xs uppercase mb-2"><i class="fas fa-check-circle mr-1"></i> Needs (Kebutuhan)</strong>
+                                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                            <li>transportasi yang cepat, aman, dan terjangkau bagi anak kos.</li>
+                                            <li>Promo atau diskon yang rutin dan bisa digunakan kapan saja</li>
+                                            <li>Opsi pemilihan driver berdasarkan preferensi gender demi keamanan pengguna perempuan.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-red-500/5 p-4 rounded-xl border border-red-500/20">
+                                        <strong class="text-red-400 block text-xs uppercase mb-2"><i class="fas fa-times-circle mr-1"></i> Challenges (Masalah)</strong>
+                                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                            <li>Promo makanan terbatas pada jam tertentu dan tidak tersedia di akhir pekan.</li>
+                                            <li>Masih merasa was-was ketika naik ojek online sendirian (terutama dengan driver laki-laki).</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="bg-gradient-to-r from-neonBlue/20 to-neonPurple/20 p-4 rounded-xl border border-white/10">
+                                    <strong class="text-white block text-sm uppercase mb-2"><i class="fas fa-lightbulb text-yellow-300 mr-2"></i> Opportunities (Peluang Desain)</strong>
+                                    <div class="grid md:grid-cols-3 gap-2 text-xs text-slate-200">
+                                        <div class="bg-black/50 p-2 rounded">
+                                            Aplikasi dapat menambahkan fitur pilih gender driver untuk meningkatkan rasa aman pengguna perempuan.
+                                        </div>
+                                        <div class="bg-black/50 p-2 rounded">
+                                            Meningkatkan jumlah promo dan memperluas waktu promo (terutama malam hari atau weekend).
+                                        </div>
+                                        <div class="bg-black/50 p-2 rounded">
+                                            Promo khusus anak kos hemat dengan paket transportasi dan makanan berbiaya rendah.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="gsap-reveal mb-16">
+                <h3 class="text-2xl font-bold mb-8 pl-4 border-l-4 border-neonBlue">Insight Hasil Wawancara</h3>
+                <p class="text-slate-400 mb-6">Sumber Data: Wawancara Mendalam & Observasi (Responden: Alivia Riska)</p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="glass-card p-5 rounded-xl border-t-4 border-green-500 hover:bg-white/5 transition">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-thumbs-up text-green-500 mr-2"></i>
+                            <h4 class="font-bold text-white">Likes (Disukai)</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-2">
+                            <li>User merasa aplikasi praktis dan mudah digunakan untuk kebutuhan sehari-hari.</li>
+                            <li>Fleksibilitas pembayaran (bisa tunai maupun e-wallet/GoPay) sangat membantu.</li>
+                            <li>Menyukai tampilan visual yang menarik dan cerah (pada referensi aplikasi Grab).</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-xl border-t-4 border-red-500 hover:bg-white/5 transition">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-thumbs-down text-red-500 mr-2"></i>
+                            <h4 class="font-bold text-white">Dislikes (Tidak Disukai)</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-2">
+                            <li>Ukuran tulisan/font terlalu kecil sehingga sulit dibaca.</li>
+                            <li>Merasa biaya transportasi online lebih mahal dibandingkan menggunakan kendaraan pribadi.</li>
+                            <li>Syarat penggunaan promo makanan seringkali terlalu ribet dan sulit dimengerti.</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-xl border-t-4 border-orange-500 hover:bg-white/5 transition">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-exclamation-triangle text-orange-500 mr-2"></i>
+                            <h4 class="font-bold text-white">Pain Points (Masalah Utama)</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-2">
+                            <li>Sulit mendapatkan driver saat jam sibuk (waktu tunggu lama).</li>
+                            <li>Aplikasi mengalami <i>lag</i>/macet saat digunakan pada waktu ramai.</li>
+                            <li>Kesulitan mengoperasikan aplikasi karena kendala pemahaman teknologi (kurang <i>tech-savvy</i>).</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-xl border-t-4 border-yellow-400 hover:bg-white/5 transition">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-question-circle text-yellow-400 mr-2"></i>
+                            <h4 class="font-bold text-white">Confusion (Kebingungan)</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-2">
+                            <li>User bingung/kesulitan membaca informasi di layar karena teks yang kekecilan.</li>
+                            <li>Kebingungan dalam pengoperasian fitur-fitur tertentu bagi user yang jarang menggunakan aplikasi.</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-xl border-t-4 border-neonBlue hover:bg-white/5 transition">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-star text-neonBlue mr-2"></i>
+                            <h4 class="font-bold text-white">Expectation (Harapan)</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-2">
+                            <li>Berharap promo makanan diperbanyak dan tidak dibatasi jam tertentu.</li>
+                            <li>Ingin harga lebih hemat agar cocok untuk kantong mahasiswa/anak kos.</li>
+                            <li>Tampilan yang lebih jelas (font lebih besar) agar mudah dibaca.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="gsap-reveal">
+                <h3 class="text-2xl font-bold mb-6 pl-4 border-l-4 border-neonBlue">User Journey Map</h3>
+                <div class="glass-card p-4 rounded-xl">
+                    <img src="img/rehanmap.png" 
+                         alt="User Journey Map" 
+                         class="w-full rounded-lg border border-white/10 hover:opacity-90 transition">
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <img src="img/agus.png" 
+                         alt="User Journey Map" 
+                         class="w-full rounded-lg border border-white/10 hover:opacity-90 transition">
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <img src="img/zenimap.png" 
+                         alt="User Journey Map" 
+                         class="w-full rounded-lg border border-white/10 hover:opacity-90 transition">
+                </div>
+                <p class="text-center text-slate-500 text-sm mt-4">
+                    Diagram alur perasaan dan tindakan pengguna dari mulai membuka aplikasi hingga selesai transaksi.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="define" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 gsap-reveal">
+                <span class="text-neonPurple uppercase tracking-widest text-sm font-bold">Tahap 2</span>
+                <h2 class="text-4xl font-heading font-bold mt-2">Define</h2>
+            </div>
+
+            <div class="gsap-reveal max-w-5xl mx-auto mb-16">
+                
+                <div class="glass-card p-8 rounded-2xl border border-neonPurple/50 relative mb-8">
+                    <div class="absolute -top-5 left-10 bg-neonPurple text-white px-4 py-1 rounded-full text-sm font-bold shadow-[0_0_15px_#8b5cf6]">
+                        POINT OF VIEW (POV)
+                    </div>
+                    <p class="text-lg md:text-xl text-slate-200 leading-relaxed text-center mt-4">
+                        "Pengguna (mulai dari Mahasiswa hingga Lansia) <strong>membutuhkan</strong> akses layanan transportasi & makanan yang aman, mudah dibaca, dan transparan secara biaya. 
+                        <br><br>
+                        <strong>Hal ini dikarenakan:</strong> Aplikasi saat ini memiliki tampilan yang sulit dipahami (font kecil), syarat promo yang rumit, serta adanya kekhawatiran terhadap keamanan dan ketersediaan driver."
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    
+                    <div class="bg-white/5 p-6 rounded-xl border-l-4 border-red-500 hover:bg-white/10 transition">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 mr-3">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Visual & Gaptek</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-2">
+                            <li>Tulisan aplikasi terlalu kecil untuk pengguna Lansia.</li>
+                            <li>Sulit memahami fitur karena gaptek (kurang paham teknologi).</li>
+                            <li>Aplikasi error/lag saat beban pengguna tinggi].</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white/5 p-6 rounded-xl border-l-4 border-orange-500 hover:bg-white/10 transition">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 mr-3">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Trust & Safety</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-2">
+                            <li>Merasa was-was naik ojek online sendirian (terutama driver laki-laki).</li>
+                            <li>Susah cari driver saat jam ramai (lama menunggu).</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white/5 p-6 rounded-xl border-l-4 border-neonBlue hover:bg-white/10 transition">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-neonBlue/20 flex items-center justify-center text-neonBlue mr-3">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Promo & Payment</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-300 space-y-2">
+                            <li>Syarat promo terlalu banyak, rumit, dan terbatas jam tertentu.</li>
+                            <li>Promo tidak tersedia di akhir pekan.</li>
+                            <li>Belum terbiasa menggunakan uang digital (e-wallet).</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="gsap-reveal mb-16">
+                    <h3 class="text-xl font-bold mb-6 flex items-center text-white">
+                        <i class="fas fa-lightbulb text-yellow-400 mr-3"></i> How Might We (HMW)
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        
+                        <div class="glass-card p-5 rounded-xl border-l-4 border-neonBlue hover:translate-x-2 transition duration-300">
+                            <h4 class="font-bold text-white mb-2 text-lg">Aksesibilitas Visual</h4>
+                            <p class="text-slate-300 text-sm mb-3">
+                                "Bagaimana kita bisa merancang antarmuka yang ramah bagi semua usia (termasuk lansia) dengan ikon besar, kontras tinggi, dan font yang jelas?"
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] bg-white/10 text-slate-400 px-2 py-1 rounded">Ikon Besar & Jelas</span>
+                                <span class="text-[10px] bg-white/10 text-slate-400 px-2 py-1 rounded">Mode Sederhana (Lansia)</span>
+                                <span class="text-[10px] bg-white/10 text-slate-400 px-2 py-1 rounded">Kontras Warna</span>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-xl border-l-4 border-neonPurple hover:translate-x-2 transition duration-300">
+                            <h4 class="font-bold text-white mb-2 text-lg">Edukasi Pengguna</h4>
+                            <p class="text-slate-300 text-sm mb-3">
+                                "Bagaimana kita bisa memandu pengguna yang baru pertama kali memakai aplikasi agar paham cara memesan dan membayar tanpa kebingungan?"
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] bg-white/10 text-slate-400 px-2 py-1 rounded">Tutorial Pengguna Baru</span>
+                                <span class="text-[10px] bg-white/10 text-slate-400 px-2 py-1 rounded">Bantuan Pembayaran</span>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-xl border-l-4 border-orange-500 hover:translate-x-2 transition duration-300">
+                            <h4 class="font-bold text-white mb-2 text-lg">Informasi & Transparansi</h4>
+                            <p class="text-slate-300 text-sm mb-3">
+                                "Bagaimana kita bisa memberikan informasi status driver dan perbandingan harga promo secara transparan dan <i>real-time</i>?"
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] bg-white/10 text-slate-400 px-2 py-1 rounded">Pop-up Notifikasi Jelas</span>
+                                <span class="text-[10px] bg-white/10 text-slate-400 px-2 py-1 rounded">Perbandingan Harga</span>
+                                <span class="text-[10px] bg-white/10 text-slate-400 px-2 py-1 rounded">Riwayat Rute</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="gsap-reveal">
+                    <h3 class="text-xl font-bold mb-6">Prioritas Masalah (Value Matrix)</h3>
+                    <img src="img/affinitydiagram.png" alt="Value Matrix" class="w-full rounded-xl border border-white/20">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ideate" class="py-20 bg-slate-900/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 gsap-reveal">
+                <span class="text-neonPurple uppercase tracking-widest text-sm font-bold">Tahap 3</span>
+                <h2 class="text-4xl font-heading font-bold mt-2">Ideate</h2>
+                <p class="text-slate-400">Dari sketsa kasar hingga Userflow.</p>
+            </div>
+
+            <div class="mb-16 gsap-reveal">
+                <h3 class="text-2xl font-bold mb-6 pl-4 border-l-4 border-neonBlue">Crazy 8's & Wireframe</h3>
+                    <img src="img/crazy8.png" class="rounded-lg w-full hover:opacity-80 transition cursor-pointer glass-card">
+            </div>
+<div class="gsap-reveal mt-16">
+                <h3 class="text-2xl font-bold mb-8 pl-4 border-l-4 border-neonPurple">System User Flow & Wireframe</h3>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <div class="glass-card p-5 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-cyan-400/30 transition shadow-lg hover:shadow-cyan-500/10">
+                        <div class="mb-5 rounded-xl overflow-hidden border border-white/10 relative h-[480px] bg-black/50">
+                            <a href="img/Beranda.png" target="_blank" class="cursor-zoom-in block h-full w-full">
+                                <img src="img/Beranda.png" alt="Wireframe Beranda" class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-500">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 flex justify-between items-end">
+                                    <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider bg-cyan-400/10 px-2 py-1 rounded border border-cyan-400/30">Home UI</span>
+                                    <i class="fas fa-expand text-white/50 text-xs"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="absolute top-4 right-4 p-2 opacity-10"><i class="fas fa-home text-4xl text-white"></i></div>
+                        <h4 class="text-base font-bold text-cyan-400 mb-4 border-b border-white/10 pb-2">2. Logika Beranda (Home)</h4>
+                        
+                        <div class="space-y-3 relative pl-3 border-l border-white/10 ml-1">
+                            <div class="relative">
+                                <span class="absolute -left-[17px] top-1.5 w-2 h-2 rounded-full bg-slate-500"></span>
+                                <h5 class="text-white text-xs font-bold">Membuka Home</h5>
+                                <p class="text-[10px] text-slate-400">User mengakses halaman utama.</p>
+                            </div>
+                            <div class="relative bg-white/5 p-2 rounded border border-dashed border-white/20">
+                                <span class="absolute -left-[23px] top-3 w-2 h-2 rounded-full bg-yellow-500"></span>
+                                <h5 class="text-yellow-400 text-[10px] font-bold uppercase mb-1">Load Data & Personalisasi</h5>
+                                <ul class="list-disc list-inside text-[10px] text-slate-300">
+                                    <li>Load preferensi tampilan.</li>
+                                    <li>Fetch Banner Promo Terbaru.</li>
+                                    <li>Simpan interaksi user.</li>
+                                </ul>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute -left-[17px] top-1.5 w-2 h-2 rounded-full bg-green-500"></span>
+                                <h5 class="text-white text-xs font-bold">Tampilan Ready</h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="glass-card p-5 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-indigo-400/30 transition shadow-lg hover:shadow-indigo-500/10">
+                        <div class="mb-5 rounded-xl overflow-hidden border border-white/10 relative h-[480px] bg-black/50">
+                            <a href="img/riwayat.png" target="_blank" class="cursor-zoom-in block h-full w-full">
+                                <img src="img/riwayat.png" alt="Wireframe Riwayat" class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-500">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 flex justify-between items-end">
+                                    <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider bg-indigo-400/10 px-2 py-1 rounded border border-indigo-400/30">History UI</span>
+                                    <i class="fas fa-expand text-white/50 text-xs"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="absolute top-4 right-4 p-2 opacity-10"><i class="fas fa-history text-4xl text-white"></i></div>
+                        <h4 class="text-base font-bold text-indigo-400 mb-4 border-b border-white/10 pb-2">4. Fitur Riwayat Tujuan</h4>
+                        
+                        <div class="space-y-3 relative pl-3 border-l border-white/10 ml-1">
+                            <div class="relative">
+                                <span class="absolute -left-[17px] top-1.5 w-2 h-2 rounded-full bg-slate-500"></span>
+                                <h5 class="text-white text-xs font-bold">Buka Riwayat / Search</h5>
+                                <p class="text-[10px] text-slate-400">User ingin memakai tujuan lama.</p>
+                            </div>
+                            <div class="relative bg-white/5 p-2 rounded border border-dashed border-white/20">
+                                <span class="absolute -left-[23px] top-3 w-2 h-2 rounded-full bg-yellow-500"></span>
+                                <h5 class="text-yellow-400 text-[10px] font-bold uppercase mb-1">Fetch Database Order</h5>
+                                <ul class="list-disc list-inside text-[10px] text-slate-300">
+                                    <li>Ambil data pesanan terakhir.</li>
+                                    <li>Filter by Tanggal & Layanan.</li>
+                                </ul>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute -left-[17px] top-1.5 w-2 h-2 rounded-full bg-green-500"></span>
+                                <h5 class="text-white text-xs font-bold">Tampilkan List Tujuan</h5>
+                                <p class="text-[10px] text-slate-400">User memilih dari daftar.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-neonBlue/30 transition shadow-lg hover:shadow-blue-500/10">
+                        <div class="mb-5 rounded-xl overflow-hidden border border-white/10 relative h-[480px] bg-black/50">
+                            <a href="img/Login.png" target="_blank" class="cursor-zoom-in block h-full w-full">
+                                <img src="img/Login.png" alt="Wireframe Login" class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-500">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 flex justify-between items-end">
+                                    <span class="text-[10px] text-neonBlue font-bold uppercase tracking-wider bg-neonBlue/10 px-2 py-1 rounded border border-neonBlue/30">Login UI</span>
+                                    <i class="fas fa-expand text-white/50 text-xs"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="absolute top-4 right-4 p-2 opacity-10"><i class="fas fa-sign-in-alt text-4xl text-white"></i></div>
+                        <h4 class="text-lg font-bold text-neonBlue mb-6 border-b border-white/10 pb-2">1. Login & Autentikasi</h4>
+                        
+                        <div class="space-y-4 relative pl-4 border-l-2 border-white/10 ml-2">
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-slate-500"></span>
+                                <h5 class="text-white text-sm font-bold">Start: Membuka Home</h5>
+                                <p class="text-xs text-slate-400">User masuk ke halaman login.</p>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-neonBlue"></span>
+                                <h5 class="text-white text-sm font-bold">Input Username & Password</h5>
+                                <p class="text-xs text-slate-400">User memasukkan kredensial.</p>
+                            </div>
+
+                            <div class="relative bg-white/5 p-3 rounded-lg border border-dashed border-white/20">
+                                <span class="absolute -left-[29px] top-4 w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <h5 class="text-yellow-400 text-xs font-bold uppercase mb-1"><i class="fas fa-server mr-1"></i> Validasi Database</h5>
+                                <p class="text-xs text-slate-300 mb-2">Sistem validasi data pengguna ke database user.</p>
+                                <div class="grid grid-cols-1 gap-1 text-[10px]">
+                                    <div class="text-green-400 flex items-center"><i class="fas fa-check mr-2"></i> Valid: Kirim Token Autentikasi</div>
+                                    <div class="text-red-400 flex items-center"><i class="fas fa-times mr-2"></i> Invalid: Kirim Pesan Error</div>
+                                </div>
+                            </div>
+
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-green-500"></span>
+                                <h5 class="text-white text-sm font-bold">Masuk Beranda (Home)</h5>
+                                <p class="text-xs text-slate-400">Load preferensi user & tampilkan banner promo terbaru.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-purple-400/30 transition shadow-lg hover:shadow-purple-500/10">
+                        <div class="mb-5 rounded-xl overflow-hidden border border-white/10 relative h-[480px] bg-black/50">
+                            <a href="img/pemesanan.png" target="_blank" class="cursor-zoom-in block h-full w-full">
+                                <img src="img/pemesanan.png" alt="Wireframe Maps" class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-500">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 flex justify-between items-end">
+                                    <span class="text-[10px] text-neonPurple font-bold uppercase tracking-wider bg-neonPurple/10 px-2 py-1 rounded border border-neonPurple/30">Order UI</span>
+                                    <i class="fas fa-expand text-white/50 text-xs"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="absolute top-4 right-4 p-2 opacity-10"><i class="fas fa-map-marked-alt text-4xl text-white"></i></div>
+                        <h4 class="text-lg font-bold text-neonPurple mb-6 border-b border-white/10 pb-2">2. Pemesanan (Order)</h4>
+                        
+                        <div class="space-y-4 relative pl-4 border-l-2 border-white/10 ml-2">
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-slate-500"></span>
+                                <h5 class="text-white text-sm font-bold">Halaman Pemesanan</h5>
+                                <p class="text-xs text-slate-400">User memasukkan lokasi tujuan & jenis kendaraan.</p>
+                            </div>
+
+                            <div class="relative bg-white/5 p-3 rounded-lg border border-dashed border-white/20">
+                                <span class="absolute -left-[29px] top-4 w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <h5 class="text-yellow-400 text-xs font-bold uppercase mb-1"><i class="fas fa-satellite mr-1"></i> Maps Service API</h5>
+                                <ul class="list-disc list-inside text-[10px] text-slate-300 space-y-1">
+                                    <li>Validasi lokasi & estimasi jarak.</li>
+                                    <li>Hitung biaya berdasarkan kendaraan.</li>
+                                    <li>Tampilkan daftar driver tersedia.</li>
+                                </ul>
+                            </div>
+
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-neonPurple"></span>
+                                <h5 class="text-white text-sm font-bold">Melakukan Pemesanan</h5>
+                                <p class="text-xs text-slate-400">User memilih driver dan klik order.</p>
+                            </div>
+
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-green-500"></span>
+                                <h5 class="text-white text-sm font-bold">Simpan Transaksi</h5>
+                                <p class="text-xs text-slate-400">Kirim request ke driver -> Update status driver -> Simpan ke DB Order.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-orange-400/30 transition shadow-lg hover:shadow-orange-500/10">
+                        <div class="mb-5 rounded-xl overflow-hidden border border-white/10 relative h-[480px] bg-black/50">
+                            <a href="img/pembayaran.png" target="_blank" class="cursor-zoom-in block h-full w-full">
+                                <img src="img/pembayaran.png" alt="Wireframe Payment" class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-500">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 flex justify-between items-end">
+                                    <span class="text-[10px] text-orange-400 font-bold uppercase tracking-wider bg-orange-400/10 px-2 py-1 rounded border border-orange-400/30">Payment UI</span>
+                                    <i class="fas fa-expand text-white/50 text-xs"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="absolute top-4 right-4 p-2 opacity-10"><i class="fas fa-credit-card text-4xl text-white"></i></div>
+                        <h4 class="text-lg font-bold text-orange-500 mb-6 border-b border-white/10 pb-2">3. Pembayaran</h4>
+                        
+                        <div class="space-y-4 relative pl-4 border-l-2 border-white/10 ml-2">
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-slate-500"></span>
+                                <h5 class="text-white text-sm font-bold">Pilih Metode Pembayaran</h5>
+                                <p class="text-xs text-slate-400">User melihat list metode dari sistem.</p>
+                            </div>
+
+                            <div class="relative bg-white/5 p-3 rounded-lg border border-dashed border-white/20">
+                                <span class="absolute -left-[29px] top-4 w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <h5 class="text-yellow-400 text-xs font-bold uppercase mb-1"><i class="fas fa-exchange-alt mr-1"></i> Payment Gateway API</h5>
+                                <p class="text-xs text-slate-300">Validasi saldo pengguna secara real-time.</p>
+                            </div>
+
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-green-500"></span>
+                                <h5 class="text-white text-sm font-bold">Proses Transaksi Selesai</h5>
+                                <ul class="list-disc list-inside text-[10px] text-slate-400 mt-1">
+                                    <li>Simpan bukti pembayaran.</li>
+                                    <li>Update status pesanan.</li>
+                                    <li>Kirim notifikasi sukses ke user.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-pink-400/30 transition shadow-lg hover:shadow-pink-500/10">
+                        <div class="mb-5 rounded-xl overflow-hidden border border-white/10 relative h-[480px] bg-black/50">
+                            <a href="img/detailaksesibilitas.png" target="_blank" class="cursor-zoom-in block h-full w-full">
+                                <img src="img/detailaksesibilitas.png" alt="Wireframe Settings" class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-500">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 flex justify-between items-end">
+                                    <span class="text-[10px] text-pink-400 font-bold uppercase tracking-wider bg-pink-400/10 px-2 py-1 rounded border border-pink-400/30">Settings UI</span>
+                                    <i class="fas fa-expand text-white/50 text-xs"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="absolute top-4 right-4 p-2 opacity-10"><i class="fas fa-cog text-4xl text-white"></i></div>
+                        <h4 class="text-lg font-bold text-pink-500 mb-6 border-b border-white/10 pb-2">4. Aksesibilitas (Pengaturan)</h4>
+                        
+                        <div class="space-y-4 relative pl-4 border-l-2 border-white/10 ml-2">
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-slate-500"></span>
+                                <h5 class="text-white text-sm font-bold">Halaman Pengaturan</h5>
+                                <p class="text-xs text-slate-400">User masuk menu pengaturan akun.</p>
+                            </div>
+                            
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-pink-500"></span>
+                                <h5 class="text-white text-sm font-bold">Mengubah Preferensi</h5>
+                                <p class="text-xs text-slate-400">User mengubah Tema, Ukuran Font, atau Bahasa.</p>
+                            </div>
+
+                            <div class="relative bg-white/5 p-3 rounded-lg border border-dashed border-white/20">
+                                <span class="absolute -left-[29px] top-4 w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <h5 class="text-yellow-400 text-xs font-bold uppercase mb-1">System Update</h5>
+                                <p class="text-xs text-slate-300">Update data preferensi ke database user.</p>
+                            </div>
+
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-green-500"></span>
+                                <h5 class="text-white text-sm font-bold">Tampilan Berubah</h5>
+                                <p class="text-xs text-slate-400">UI aplikasi menyesuaikan dengan setting baru.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="gsap-reveal mt-24 border-t border-white/10 pt-16">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-heading font-bold mb-2">Design System</h3>
+                    <p class="text-slate-400">Panduan visual konsisten yang digunakan pada desain aplikasi.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    
+                    <div class="glass-card p-8 rounded-3xl border border-white/5">
+                        <h4 class="text-xl font-bold text-white mb-8 flex items-center border-b border-white/10 pb-4">
+                            <i class="fas fa-palette mr-3 text-neonBlue"></i> Color Palette
+                        </h4>
+
+                        <div class="mb-8">
+                            <p class="text-xs text-slate-400 mb-3 uppercase tracking-widest font-bold">Primary Colors</p>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="text-center group">
+                                    <div class="h-20 w-full rounded-xl shadow-lg mb-2 relative flex items-center justify-center transform group-hover:scale-105 transition" style="background-color: #E0F2FE;">
+                                        <span class="text-[#0369A1] font-bold text-xs opacity-0 group-hover:opacity-100 transition">Surface</span>
+                                    </div>
+                                    <p class="text-xs font-mono text-slate-300">#E0F2FE</p>
+                                </div>
+                                <div class="text-center group">
+                                    <div class="h-20 w-full rounded-xl shadow-lg mb-2 relative flex items-center justify-center transform group-hover:scale-105 transition" style="background-color: #0284C7;">
+                                        <span class="text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition">Main</span>
+                                    </div>
+                                    <p class="text-xs font-mono text-slate-300">#0284C7</p>
+                                </div>
+                                <div class="text-center group">
+                                    <div class="h-20 w-full rounded-xl shadow-lg mb-2 relative flex items-center justify-center transform group-hover:scale-105 transition" style="background-color: #0369A1;">
+                                        <span class="text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition">Dark</span>
+                                    </div>
+                                    <p class="text-xs font-mono text-slate-300">#0369A1</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <p class="text-xs text-slate-400 mb-3 uppercase tracking-widest font-bold">Secondary (Status)</p>
+                            <div class="grid grid-cols-4 gap-3">
+                                <div class="text-center">
+                                    <div class="h-12 w-full rounded-lg mb-2" style="background-color: #10B981;"></div>
+                                    <p class="text-[10px] font-mono text-slate-400">#10B981</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="h-12 w-full rounded-lg mb-2" style="background-color: #FBBF24;"></div>
+                                    <p class="text-[10px] font-mono text-slate-400">#FBBF24</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="h-12 w-full rounded-lg mb-2" style="background-color: #EF4444;"></div>
+                                    <p class="text-[10px] font-mono text-slate-400">#EF4444</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="h-12 w-full rounded-lg mb-2" style="background-color: #38BDF8;"></div>
+                                    <p class="text-[10px] font-mono text-slate-400">#38BDF8</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="text-xs text-slate-400 mb-3 uppercase tracking-widest font-bold">Neutrals</p>
+                            <div class="grid grid-cols-6 gap-2">
+                                <div class="h-10 w-full rounded border border-white/20" style="background-color: #FFFFFF;" title="#FFFFFF"></div>
+                                <div class="h-10 w-full rounded" style="background-color: #F9FAFB;" title="#F9FAFB"></div>
+                                <div class="h-10 w-full rounded" style="background-color: #E5E7EB;" title="#E5E7EB"></div>
+                                <div class="h-10 w-full rounded" style="background-color: #6B7280;" title="#6B7280"></div>
+                                <div class="h-10 w-full rounded border border-white/10" style="background-color: #292929;" title="#292929"></div>
+                                <div class="h-10 w-full rounded border border-white/10" style="background-color: #111111;" title="#111111"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
+                                <span>White</span>
+                                <span>Black</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl border border-white/5">
+                        <h4 class="text-xl font-bold text-white mb-8 flex items-center border-b border-white/10 pb-4">
+                            <i class="fas fa-font mr-3 text-neonPurple"></i> Typography
+                        </h4>
+
+                        <div class="flex items-end mb-8">
+                            <h1 class="text-6xl font-bold text-white mr-4">Aa</h1>
+                            <div>
+                                <h5 class="text-2xl font-bold text-white">Inter</h5>
+                                <p class="text-slate-400 text-sm">Primary Typeface</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-neonBlue pl-4">
+                                <span class="text-xs text-neonBlue font-mono block mb-1">Heading 1 • Bold • 28px</span>
+                                <h1 class="font-bold text-white" style="font-size: 28px; line-height: 1.2;">Transportasi Masa Depan</h1>
+                            </div>
+
+                            <div class="border-l-4 border-neonPurple pl-4">
+                                <span class="text-xs text-neonPurple font-mono block mb-1">Heading 2 • Bold • 24px</span>
+                                <h2 class="font-bold text-white" style="font-size: 24px; line-height: 1.3;">Pilih Layanan Kami</h2>
+                            </div>
+
+                            <div class="border-l-4 border-orange-500 pl-4">
+                                <span class="text-xs text-orange-500 font-mono block mb-1">Heading 3 • Bold • 18px</span>
+                                <h3 class="font-bold text-white" style="font-size: 18px; line-height: 1.4;">Detail Pesanan</h3>
+                            </div>
+
+                            <div class="border-l-4 border-slate-500 pl-4">
+                                <span class="text-xs text-slate-400 font-mono block mb-1">Body Text • Light • 16px (Default)</span>
+                                <p class="font-light text-slate-300">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Penggunaan font Inter Light memberikan kesan bersih, modern, dan mudah dibaca (legible) pada latar belakang gelap.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prototype" class="py-20 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neonBlue/10 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 gsap-reveal">
+                <span class="text-neonPurple uppercase tracking-widest text-sm font-bold">Tahap 4</span>
+                <h2 class="text-4xl font-heading font-bold mt-2">High-Fidelity Prototype</h2>
+                <p class="text-slate-400 mb-8">Hasil desain akhir yang siap diuji.</p>
+                
+                <a href="#" target="_blank" class="inline-flex items-center bg-gradient-to-r from-neonBlue to-neonPurple px-8 py-4 rounded-full font-bold text-white text-lg hover:scale-105 transition shadow-[0_0_20px_rgba(139,92,246,0.5)]">
+                    <i class="fab fa-figma mr-3 text-2xl"></i> Coba Prototype di Figma
+                </a>
+            </div>
+
+            <div class="gsap-reveal grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="glass-card p-2 rounded-2xl transform md:-rotate-6 hover:rotate-0 transition duration-500">
+                    <img src="https://via.placeholder.com/300x600?text=LOGIN+SCREEN" class="w-full rounded-xl">
+                </div>
+                <div class="glass-card p-2 rounded-2xl z-10 hover:scale-105 transition duration-500 shadow-2xl">
+                    <img src="img/Beranda.png" class="w-full rounded-xl">
+                </div>
+                <div class="glass-card p-2 rounded-2xl transform md:rotate-6 hover:rotate-0 transition duration-500">
+                    <img src="https://via.placeholder.com/300x600?text=JADWAL+SCREEN" class="w-full rounded-xl">
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+               <p class="text-slate-400 text-sm">Flow mencakup: Login Register -> Pilih Layanan -> Cari Rute/Makanan -> Tracking -> Pembayaran</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="test" class="py-24 bg-slate-900/50 relative">
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-neonBlue/5 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 gsap-reveal">
+                <span class="text-neonPurple uppercase tracking-widest text-sm font-bold">Tahap 5</span>
+                <h2 class="text-4xl font-heading font-bold mt-2">Usability Testing</h2>
+                <p class="text-slate-400 mt-2">Validasi desain langsung kepada pengguna target.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-5 gsap-reveal">
+                    <div class="glass-card p-2 rounded-3xl border border-white/10 relative group">
+                        <div class="relative rounded-2xl overflow-hidden h-[500px]">
+                            <img src="img/user_testing.jpeg" alt="Dokumentasi Usability Testing" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 pt-20">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-neonBlue/20 flex items-center justify-center border border-neonBlue text-neonBlue font-bold">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white">Alfareza</h4>
+                                        <p class="text-sm text-slate-300">Mahasiswa - Calon Pengguna Aktif</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-6 right-6 bg-green-500/20 backdrop-blur-md border border-green-500/30 text-green-400 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            <i class="fas fa-check-circle mr-1"></i> Tested
+                        </div>
+                    </div>
+                    
+                    <p class="text-center text-slate-500 text-xs mt-4">
+                        *Dokumentasi sesi testing fitur "Top Up Saldo & Pemesanan Ride"
+                    </p>
+                </div>
+
+                <div class="lg:col-span-7 space-y-8 gsap-reveal">
+                    
+                    <div class="glass-card p-6 rounded-2xl border border-white/5">
+                        <h3 class="text-xl font-bold mb-6 flex items-center text-white">
+                            <i class="fas fa-clipboard-list text-neonPurple mr-3"></i> Skenario & Hasil (Qualitative)
+                        </h3>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm text-slate-300">
+                                <thead class="bg-white/5 text-neonBlue uppercase text-xs font-bold border-b border-white/10">
+                                    <tr>
+                                        <th class="px-4 py-3">Task (Tugas)</th>
+                                        <th class="px-4 py-3">Feedback / Temuan</th>
+                                        <th class="px-4 py-3 text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-white/5">
+                                    <tr class="hover:bg-white/5 transition">
+                                        <td class="px-4 py-4 font-semibold text-white">1. Cek Saldo & Top Up</td>
+                                        <td class="px-4 py-4">
+                                            "Tampilan saldo di Home sangat jelas. Tombol Top-Up mudah ditemukan, tapi ikonnya sedikit kekecilan."
+                                        </td>
+                                        <td class="px-4 py-4 text-center">
+                                            <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs">Berhasil</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-white/5 transition">
+                                        <td class="px-4 py-4 font-semibold text-white">2. Memesan GoRide</td>
+                                        <td class="px-4 py-4">
+                                            "Alur pemesanan lancar. Peta penjemputan akurat. User sempat bingung membedakan metode bayar Tunai/E-Wallet."
+                                        </td>
+                                        <td class="px-4 py-4 text-center">
+                                            <span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-xs">Catatan</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="glass-card p-5 rounded-xl border-l-4 border-red-500">
+                            <h4 class="font-bold text-white mb-2 flex items-center">
+                                <i class="fas fa-bug text-red-500 mr-2"></i> Pain Point
+                            </h4>
+                            <p class="text-xs text-slate-400">
+                                User sempat ragu apakah metode pembayaran sudah terpilih atau belum karena indikator kurang kontras.
+                            </p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl border-l-4 border-green-500">
+                            <h4 class="font-bold text-white mb-2 flex items-center">
+                                <i class="fas fa-tools text-green-500 mr-2"></i> Solusi Desain
+                            </h4>
+                            <p class="text-xs text-slate-400">
+                                Memberikan <strong>border tebal</strong> atau warna highlight pada metode pembayaran yang aktif dipilih.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-neonBlue/10 to-neonPurple/10 p-6 rounded-2xl border border-white/10 text-center">
+                        <h4 class="font-bold text-white mb-2">✨ Nilai Tambah (Feedback Positif)</h4>
+                        <p class="text-sm text-slate-300 italic">
+                            "Secara keseluruhan, aplikasinya jauh lebih modern dibanding yang lama. Mode gelapnya nyaman di mata mahasiswa yang sering begadang."
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/10 bg-black pt-12 pb-8">
+        <div class="container mx-auto px-6 text-center">
+            <h4 class="text-2xl font-heading font-bold mb-2">POLITEKNIK NEGERI MADIUN </h4>
+            <p class="text-slate-500 mb-8">Jurusan Teknik - Prodi Teknologi Rekayasa Perangkat Lunak [cite: 3]</p>
+            
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-dribbble text-xl"></i></a>
+            </div>
+
+            <p class="text-slate-600 text-sm">
+                &copy; 2025 [Nama Mahasiswa]. Dibuat untuk UAS UI/UX.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // Register ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animasi Hero (Muncul saat load)
+        gsap.from(".gsap-hero", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // Animasi Reveal saat Scroll (Generic)
+        const revealElements = document.querySelectorAll(".gsap-reveal");
+        
+        revealElements.forEach((element) => {
+            gsap.fromTo(element, 
+                { y: 50, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%", // Animasi mulai saat elemen masuk 85% viewport
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
